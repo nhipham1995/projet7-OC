@@ -22,8 +22,9 @@
   </head>
   <body class="m-3 m-lg-5">
     <div class="container">
-      <h1>Hello</h1>
-      <div class="d-flex flex-row align-items-center simple-search-wrapper">
+      <header><img src="./assets/images/logo.png" /></header>
+      <h1>Les petits plats</h1>
+      <div class="simple-search-wrapper">
         <input
           type="text"
           class="form-control border-0 py-4 basic-search-input"
@@ -31,35 +32,28 @@
           aria-describedby="basic-input"
           placeholder="Rechercher une recette"
         />
-        <i class="fa fa-search icon px-3 icon-wrapper"></i>
+        <img src="./assets/images/loup.png" />
       </div>
-      <div class="advanced-searchs">
+      <section class="advanced-searchs">
         <div class="tags-wrapper">
-          <div
-            class="tags alert alert-warning alert-dismissible fade show ingredient"
-            role="alert"
-          >
+          <div class="tags ingredient">
             Coco
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true"><i class="fa fa-times-circle"></i></span>
+            <button type="button" class="close" aria-label="Close">
+              <img src="./assets/images/close-icon.png" />
             </button>
           </div>
         </div>
-        <div class="option-wrappers d-flex flex-row">
+        <div class="option-wrappers">
           <!-- ingredient dropdown -->
           <div class="ingredient-search mr-3">
             <button
               type="button"
-              class="btn btn-primary dropdown-toggle"
+              class="btn btn-primary"
               aria-expanded="false"
               id="ingre-button"
             >
               Ingrédients
+              <img src="./assets/images/chevron-down.png" />
             </button>
             <ul id="dropdown-menu">
               <div class="search-bar">
@@ -70,31 +64,87 @@
                   aria-describedby="ingredient-input"
                   placeholder="Rechercher un ingrédient"
                 />
-                <i class="fa fa-chevron-up"></i>
+                <i class="fa fa-chevron-up" id="icon-ingre-close"></i>
               </div>
-              <li><a class="dropdown-item text-white" href="#">Action</a></li>
-              <li>
-                <a class="dropdown-item text-white" href="#">Another action</a>
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="#"
-                  >Something else here</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="#">Separated link</a>
-              </li>
+              <div class="dropdown-col">
+                <div>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ingredient text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+              </div>
             </ul>
           </div>
           <!-- appareils dropdown -->
           <div class="appareils-search mr-3">
             <button
               type="button"
-              class="btn btn-success dropdown-toggle"
+              class="btn btn-success"
               data-toggle="dropdown"
               aria-expanded="false"
             >
-              Appareils
+              Appareils <img src="./assets/images/chevron-down.png" />
             </button>
             <ul class="dropdown-menu appareils">
               <div class="search-bar">
@@ -133,11 +183,12 @@
           <div class="ustensiles-search">
             <button
               type="button"
-              class="btn btn-danger dropdown-toggle"
+              class="btn btn-danger"
               data-toggle="dropdown"
               aria-expanded="false"
             >
-              Appareils
+              Ustensiles
+              <img src="./assets/images/chevron-down.png" />
             </button>
             <ul class="dropdown-menu ustensiles">
               <div class="search-bar">
@@ -150,30 +201,78 @@
                 />
                 <i class="fa fa-chevron-up"></i>
               </div>
-              <li>
-                <a class="dropdown-item ustensiles text-white" href="#"
-                  >Action</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item ustensiles text-white" href="#"
-                  >Another action</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item ustensiles text-white" href="#"
-                  >Something else here</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item ustensiles text-white" href="#"
-                  >Separated link</a
-                >
-              </li>
+              <div class="dropdown-col">
+                <div>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+                <div>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Another action</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Something else here</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item ustensiles text-white" href="#"
+                      >Separated link</a
+                    >
+                  </li>
+                </div>
+              </div>
             </ul>
           </div>
         </div>
-      </div>
+      </section>
       <main class="container overflow-hidden">
         <!-- <div class="article-list row gap-4 align-items-stretch"> -->
         <div class="article-list">
@@ -208,10 +307,7 @@
                   </div>
                   <p class="card-text col">
                     Some quick example text to build on the card title and make
-                    up the bulk of the card's content. Some quick example text
-                    to build on the card title and make up the bulk of the
-                    card's content. Some quick example text to build on the card
-                    title and make up the bulk of the card's content.
+                    up the bulk of the card's content.
                   </p>
                 </div>
               </div>
