@@ -3,7 +3,8 @@ let showedItems;
 let recipeListe;
 const searchInput = document.querySelector(".basic-search-input");
 let singleValue = "";
-
+let filterArr;
+let fixRecipesArr;
 searchInput.addEventListener("keyup", async (event) => {
 	singleValue = searchInput.value;
 	if (searchInput.value.length > 2) {
@@ -16,9 +17,14 @@ searchInput.addEventListener("keyup", async (event) => {
 			resultData(keyword, showedItems);
 		});
 		displayRecipes(showedItems);
+		filterArr = showedItems;
 	} else {
 		init();
+		filterArr = showedItems;
 	}
+	fixRecipesArr = showedItems;
+	const ingreList = keywordIngredientArr(showedItems, "");
+	displayIngreItems(ingreList);
 });
 
 const fetchData = async () => {
@@ -44,7 +50,6 @@ const resultData = async (keyword, recipes) => {
 				tokenArr.push(recipe[i]);
 			} else {
 				props = Object.values(recipe[i]);
-				// console.log(props);
 				for (let j = 0; j < props.length; j++) {
 					if (
 						(typeof props[j] === "string") |
@@ -80,10 +85,12 @@ const resultData = async (keyword, recipes) => {
 		if (isKeyword) resultArr.push(recipes[m]);
 	}
 	showedItems = resultArr;
+	console.log(resultArr);
 	return resultArr;
 };
 
-async function displayRecipes(recipes) {
+async function displayRecipes(Recipes) {
+	const recipes = [...new Set(Recipes)];
 	const recipesSection = document.getElementById("recipe-list");
 	while (recipesSection.hasChildNodes()) recipesSection.firstChild.remove();
 
@@ -98,6 +105,8 @@ const init = async () => {
 	recipeListe = await fetchData();
 	showedItems = recipeListe;
 	displayRecipes(showedItems);
+	const ingreResult = keywordIngredientArr(showedItems, "");
+	displayIngreItems(ingreResult);
 };
 
 init();
