@@ -1,73 +1,103 @@
 // using Boucle Native (while, for)
+let showedItems;
+let recipeListe;
 const searchInput = document.querySelector(".basic-search-input");
 let singleValue = "";
-searchInput.addEventListener("keyup", async () => {
-  singleValue = searchInput.value;
-  if (searchInput.value.length > 2) {
-    singleValue = searchInput.value;
-    console.log(singleValue);
-    const showedItems = await resultData(singleValue);
-    // return console.log(showedItems);
-    displayRecipes(showedItems);
-  }
-  const showedItems = await fetchData();
 
-  return console.log(showedItems);
+searchInput.addEventListener("keyup", async (event) => {
+	singleValue = searchInput.value;
+	if (searchInput.value.length > 2) {
+		singleValue = searchInput.value;
+		if ((event.value = "Backspace")) {
+			showedItems = recipeListe;
+		}
+		const newInput = singleValue.split(" ");
+		newInput.map((keyword) => {
+			resultData(keyword, showedItems);
+		});
+		displayRecipes(showedItems);
+	} else {
+		init();
+	}
 });
 
 const fetchData = async () => {
-  const response = await fetch("../js/recipes.js").then((res) =>
-    res
-      .text()
-      .then((res) => res.split("=", 2))
-      .then((result) => eval(result[1]))
-  );
-  return response;
+	const response = await fetch("../js/recipes.js").then((res) =>
+		res
+			.text()
+			.then((res) => res.split("=", 2))
+			.then((result) => eval(result[1]))
+	);
+	return response;
 };
-const resultData = async (keyword) => {
-  const resultArr = [];
-  const res = await fetchData();
-  res.map((recipe) => {
-    const tokenArr = [];
-    Object.values(recipe).map((prop) => {
-      if ((typeof prop === "string") | (typeof id === "number")) {
-        tokenArr.push(prop);
-      } else {
-        Object.values(prop).map((item) => {
-          if ((typeof item === "string") | (typeof item === "number")) {
-            tokenArr.push(item);
-          } else {
-            Object.values(item).map((id) => {
-              if ((typeof id === "string") | (typeof id == "number")) {
-                tokenArr.push(id);
-              } else {
-                Object.values(id).map((inge) => tokenArr.push(inge));
-              }
-            });
-          }
-        });
-      }
-    });
-    let isKeyword = false;
-    tokenArr.map((item) => {
-      let newitem = item.toString();
-      if (newitem.includes(keyword)) {
-        return (isKeyword = true);
-      }
-    });
-    if (isKeyword) resultArr.push(recipe);
-  });
-  console.log(resultArr);
-  return resultArr;
+const resultData = async (keyword, recipes) => {
+	const resultArr = [];
+	for (let m = 0; m < recipes.length; m++) {
+		let tokenArr = [];
+		const recipe = Object.values(recipes[m]);
+
+		for (let i = 0; i < recipe.length; i++) {
+			if (
+				(typeof recipe[i] === "string") |
+				(typeof recipe[i] === "number")
+			) {
+				tokenArr.push(recipe[i]);
+			} else {
+				props = Object.values(recipe[i]);
+				// console.log(props);
+				for (let j = 0; j < props.length; j++) {
+					if (
+						(typeof props[j] === "string") |
+						(typeof props[j] === "number")
+					) {
+						tokenArr.push(props[j]);
+					} else {
+						subProps = Object.values(props[j]);
+						for (let k = 0; k < subProps.length; k++) {
+							if (
+								(typeof subProps[k] === "string") |
+								(typeof subProps[k] === "number")
+							) {
+								tokenArr.push(subProps[k]);
+							} else {
+								sub2Props = Object.values(subProps[k]);
+								for (let l = 0; l < sub2Props.length; l++) {
+									tokenArr.push(sub2Props[l]);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		let isKeyword = false;
+		for (let t = 0; t < tokenArr.length; t++) {
+			let newitem = tokenArr[t].toString().toLowerCase();
+			if (newitem.includes(keyword)) {
+				isKeyword = true;
+			}
+		}
+		if (isKeyword) resultArr.push(recipes[m]);
+	}
+	showedItems = resultArr;
+	return resultArr;
 };
 
 async function displayRecipes(recipes) {
-  const recipesSection = document.getElementById("recipe-list");
+	const recipesSection = document.getElementById("recipe-list");
+	while (recipesSection.hasChildNodes()) recipesSection.firstChild.remove();
 
-  recipes.forEach((recipe) => {
-    const recipeModel = recipeCard(recipe);
-    const recipeCardDOM = recipeModel.getRecipeCardDOM();
-    recipesSection.appendChild(recipeCardDOM);
-    console.log("hello");
-  });
+	recipes.forEach((recipe) => {
+		const recipeModel = recipeCard(recipe);
+		const recipeCardDOM = recipeModel.getRecipeCardDOM();
+		recipesSection.appendChild(recipeCardDOM);
+	});
 }
+
+const init = async () => {
+	recipeListe = await fetchData();
+	showedItems = recipeListe;
+	displayRecipes(showedItems);
+};
+
+init();
