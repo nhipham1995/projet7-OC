@@ -1,3 +1,4 @@
+// using Boucle Native (while, for)
 let showedItems;
 let recipeListe;
 const searchInput = document.querySelector(".basic-search-input");
