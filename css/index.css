@@ -206,6 +206,7 @@ main.container {
 	justify-content: space-between;
 	align-items: center;
 	gap: 5px;
+	min-width: 85px;
 }
 .time-cook img {
 	height: 20px;
@@ -218,14 +219,23 @@ main.container {
 }
 .card-description {
 	margin-top: 5px;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	row-gap: 15px;
+}
+.card-description p {
+	font-size: 12px;
 }
 .list-ingredient {
 	border-radius: 5px;
+	display: block;
+	max-width: inherit;
 }
 .list-ingredient p {
 	font-size: 12px;
 	margin-bottom: 3px;
 }
+
 span.ingredient-name {
 	font-weight: 700;
 	font-size: 12px;
@@ -234,7 +244,9 @@ span.ingredient-name {
 	font-size: 12px;
 	font-weight: 400;
 }
-
+/* .ingre-item-wrapper {
+	display: block ruby;
+} */
 /* 
 @media screen and (min-width: 768px) {
   .article-list article:nth-child(2n + 1) {
@@ -270,5 +282,10 @@ span.ingredient-name {
 	}
 	.dropdown-col {
 		grid-template-columns: repeat(3, 1fr);
+	}
+	.card-description {
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 0;
+		column-gap: 10px;
 	}
 }

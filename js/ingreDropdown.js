@@ -21,14 +21,16 @@ ingreInput.addEventListener("keyup", async (event) => {
 		ingreValue = ingreInput.value;
 		if ((event.value = "Backspace")) {
 			// ingreItems = fixRecipesArr;
-			list = [...showedItems];
+			list = [...fixRecipesArr];
 			console.log(list);
 		}
 		const value = ingreValue.split(" ");
 		value.map((keyword) => {
 			console.log(keyword);
-			console.log(showedItems);
-			resultData(keyword, showedItems);
+			// console.log(showedItems);
+			// resultData(keyword, showedItems)
+			console.log(list);
+			// resultData(keyword, list);
 			// filter array of recipes in which keyword exists in array of ingredients
 			list = checkIngrehaskeyword(list, keyword);
 			// filter array of ingredients which contain keyword
@@ -42,9 +44,9 @@ ingreInput.addEventListener("keyup", async (event) => {
 	} else {
 		// showedItems = list;
 
-		console.log(showedItems);
-		ingreResult = keywordIngredientArr(showedItems, "");
-		console.log(ingreInput);
+		console.log(fixRecipesArr);
+		ingreResult = keywordIngredientArr(fixRecipesArr, "");
+		displayRecipes(fixRecipesArr);
 		displayIngreItems(ingreResult);
 	}
 });
@@ -65,16 +67,22 @@ async function displayIngreItems(items) {
 }
 const checkIngrehaskeyword = (arr, keyword) => {
 	const recipecontainKeyword = [];
-	console.log("Lait de coco limo".indexOf(keyword));
+	console.log();
+	console.log("Concombre".toLowerCase().indexOf("con"));
 	// take all the ingredients of recipe
 	arr.map((recipe) => {
-		const ingreArr = recipe.ingredients.flatMap((v) => v.ingredient);
+		const ingreArr = recipe.ingredients.flatMap((v) =>
+			v.ingredient.toLowerCase()
+		);
 		console.log(ingreArr);
 		ingreArr.map((ingre) => {
-			if (!(ingre.indexOf(keyword) == -1))
+			const keywordLowerCase = keyword.toLowerCase();
+			console.log(keywordLowerCase);
+			if (!(ingre.indexOf(keywordLowerCase) == -1))
 				return recipecontainKeyword.push(recipe);
 		});
 	});
+	console.log(recipecontainKeyword);
 	return recipecontainKeyword;
 };
 
@@ -84,7 +92,8 @@ const keywordIngredientArr = (arr, keyword) => {
 		v.ingredients.flatMap((v) => v.ingredient)
 	);
 	items.map((item) => {
-		if (item.indexOf(keyword) !== -1) results.push(item);
+		if (item.toLowerCase().indexOf(keyword.toLowerCase()) !== -1)
+			results.push(item);
 	});
 	return results;
 };
