@@ -50,24 +50,42 @@ input.basic-search-input::placeholder {
 }
 .tags-wrapper {
 	margin-top: 30px;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-bottom: 40px;
 }
 .tags {
 	max-width: fit-content;
 	padding-top: 5px;
 	padding-bottom: 5px;
-}
-.tags.ingredient {
-	background-color: #3282f7;
+	display: flex;
+	align-items: center;
 	color: white;
 	border-radius: 5px;
-	padding: 6px 20px;
+	padding: 6px 12px;
 	font-size: 13px;
 }
-.tags.ingredient button {
-	margin-left: 15px;
-	margin-top: -5px;
+.tags p {
+	margin-bottom: 0;
+	margin-top: 2px;
 }
-
+.tags.ingredient-tag {
+	background-color: #3282f7;
+}
+.tags.appareil-tag {
+	background-color: #4fa67d;
+}
+.tags.ustensile-tag {
+	background-color: #d1584b;
+}
+.tags button {
+	margin-left: 10px;
+}
+button.btn {
+	border-radius: 5px;
+	min-height: 70px;
+}
 .tags-wrapper span {
 	font-size: 1.1rem;
 }
@@ -76,12 +94,14 @@ input.basic-search-input::placeholder {
 	display: flex;
 	flex-direction: row;
 	gap: 7px;
+	flex-wrap: wrap;
 }
 .ingredient-search,
 .appareils-search,
 .ustensiles-search {
 	max-width: max-content;
 }
+
 .ingredient-search button,
 .appareils-search button,
 .ustensiles-search button {
@@ -95,11 +115,13 @@ input.basic-search-input::placeholder {
 	margin-left: 27px;
 	margin-top: -3px;
 }
-ul#dropdown-menu {
+ul#dropdown-menu-ingre,
+ul#dropdown-menu-appareil,
+ul#dropdown-menu-ustensile {
 	color: white;
 	border-radius: 5px;
 }
-ul#dropdown-menu {
+ul#dropdown-menu-ingre {
 	background-color: #3282f7 !important;
 	top: -43px !important;
 	left: -5px !important;
@@ -134,6 +156,9 @@ ul#dropdown-menu {
 	padding-bottom: 15px;
 	flex-wrap: wrap;
 }
+.dropdown-col li {
+	max-width: 280px;
+}
 .dropdown-item {
 	padding-left: 15px;
 	font-weight: 200;
@@ -147,22 +172,34 @@ button.btn-success {
 	background-color: #68d9a4;
 	border: none;
 }
-ul#dropdown-menu.appareils {
+ul#dropdown-menu-appareil.appareils {
 	background-color: #68d9a4 !important;
+	top: -43px !important;
+	left: -5px !important;
+	list-style-type: none;
+	display: none;
+	padding-left: 0;
 }
-.dropdown-item.appareils:hover,
-.dropdown-item.appareils:focus {
+#recommend-appareil li a.dropdown-item:hover,
+#recommend-appareil li a.dropdown-item:focus {
 	background-color: #4fa67d !important;
 }
 button.btn-danger {
 	background-color: #ed6454;
 	border: none;
 }
-ul#dropdown-menu.ustensiles {
+#ustensile-input-search.ustensiles-search {
 	background-color: #ed6454 !important;
+	border-radius: 6px;
+	height: fit-content;
 }
-.dropdown-item.ustensiles:hover,
-.dropdown-item.ustensiles:focus {
+ul#dropdown-menu-ustensile {
+	list-style: none;
+	padding-left: 0px;
+	display: none;
+}
+#recommend-ustensile li a.dropdown-item:hover,
+#recommend-ustensile li a.dropdown-item:focus {
 	background-color: #d1584b !important;
 }
 main {

@@ -35,14 +35,7 @@
 				<img src="./assets/images/loup.png" />
 			</div>
 			<section class="advanced-searchs">
-				<div class="tags-wrapper">
-					<div class="tags ingredient">
-						Coco
-						<button type="button" class="close" aria-label="Close">
-							<img src="./assets/images/close-icon.png" />
-						</button>
-					</div>
-				</div>
+				<div class="tags-wrapper"></div>
 				<div class="option-wrappers">
 					<!-- ingredient dropdown -->
 					<div class="ingredient-search mr-3">
@@ -55,7 +48,7 @@
 							Ingrédients
 							<img src="./assets/images/chevron-down.png" />
 						</button>
-						<ul id="dropdown-menu">
+						<ul id="dropdown-menu-ingre">
 							<div class="search-bar">
 								<input
 									type="text"
@@ -70,7 +63,7 @@
 									id="icon-ingre-close"
 								></i>
 							</div>
-							<div class="dropdown-col"></div>
+							<div class="dropdown-col dropdown-col-ingre"></div>
 						</ul>
 					</div>
 					<!-- appareils dropdown -->
@@ -80,11 +73,12 @@
 							class="btn btn-success"
 							data-toggle="dropdown"
 							aria-expanded="false"
+							id="appareil-button"
 						>
 							Appareils
 							<img src="./assets/images/chevron-down.png" />
 						</button>
-						<ul class="dropdown-menu appareils">
+						<ul class="appareils" id="dropdown-menu-appareil">
 							<div class="search-bar">
 								<input
 									type="text"
@@ -92,43 +86,24 @@
 									aria-label="Rechercher une recette"
 									aria-describedby="ingredient-input"
 									placeholder="Rechercher un appareil"
+									id="appareil-input-search"
 								/>
-								<i class="fa fa-chevron-up"></i>
+								<i
+									class="fa fa-chevron-up"
+									id="icon-appareil-close"
+								></i>
 							</div>
-							<li>
-								<a
-									class="dropdown-item appareils text-white"
-									href="#"
-									>Action</a
-								>
-							</li>
-							<li>
-								<a
-									class="dropdown-item appareils text-white"
-									href="#"
-									>Another action</a
-								>
-							</li>
-							<li>
-								<a
-									class="dropdown-item appareils text-white"
-									href="#"
-									>Something else here</a
-								>
-							</li>
-							<li>
-								<a
-									class="dropdown-item appareils text-white"
-									href="#"
-									>Separated link</a
-								>
-							</li>
+							<div
+								class="dropdown-col"
+								id="recommend-appareil"
+							></div>
 						</ul>
 					</div>
 					<!-- ustensiles dropdown -->
-					<div class="ustensiles-search">
+					<div class="ustensiles-search" id="ustensile-input-search">
 						<button
 							type="button"
+							id="ustensile-button"
 							class="btn btn-danger"
 							data-toggle="dropdown"
 							aria-expanded="false"
@@ -136,109 +111,25 @@
 							Ustensiles
 							<img src="./assets/images/chevron-down.png" />
 						</button>
-						<ul class="dropdown-menu ustensiles">
+						<ul class="ustensiles" id="dropdown-menu-ustensile">
 							<div class="search-bar">
 								<input
 									type="text"
 									class="form-control border-0 py-4 bg-transparent"
 									aria-label="Rechercher une recette"
 									aria-describedby="ingredient-input"
-									placeholder="Rechercher un appareil"
+									placeholder="Rechercher un ustensil"
+									id="ustensil-input-search"
 								/>
-								<i class="fa fa-chevron-up"></i>
+								<i
+									class="fa fa-chevron-up"
+									id="icon-ustensile-close"
+								></i>
 							</div>
-							<div class="dropdown-col">
-								<div>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Another action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Something else here</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Separated link</a
-										>
-									</li>
-								</div>
-								<div>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Another action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Something else here</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Separated link</a
-										>
-									</li>
-								</div>
-								<div>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Another action</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Something else here</a
-										>
-									</li>
-									<li>
-										<a
-											class="dropdown-item ustensiles text-white"
-											href="#"
-											>Separated link</a
-										>
-									</li>
-								</div>
-							</div>
+							<div
+								class="dropdown-col"
+								id="recommend-ustensile"
+							></div>
 						</ul>
 					</div>
 				</div>
@@ -271,5 +162,10 @@
 		<script src="./js/factory/recipeCard.js"></script>
 		<script src="./js/ingreDropdown.js"></script>
 		<script src="./js/factory/ingreItemKeyword.js"></script>
+		<script src="./js/factory/tag.js"></script>
+		<script src="./js//applianceDropdown.js"></script>
+		<script src="./js/factory/applianceCard.js"></script>
+		<script src="./js/ustensileDropdown.js"></script>
+		<script src="./js/factory/ustensileCard.js"></script>
 	</body>
 </html>

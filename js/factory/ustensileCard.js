@@ -1,22 +1,20 @@
-function ingreItem(data, noresult) {
-	console.log(noresult);
-	function getIngreItemDOM() {
+function ustensileItem(data, noresult) {
+	function getUstensileItemDOM() {
 		const li = document.createElement("li");
 		const a = document.createElement("a");
-		// a.classList.add("dropdown-item");
 		a.textContent = data;
 		li.appendChild(a);
-
 		if (noresult !== 0) {
 			a.classList.add("dropdown-item");
-			a.classList.add("ingredient");
+
 			li.addEventListener("click", () => {
 				const tagsWrapper =
 					document.getElementsByClassName("tags-wrapper")[0];
-				const model = tag(data, "ingredient-tag");
+				const model = tag(data, "ustensile-tag");
 				const tagItem = model.getTagDOM();
 				tagsWrapper.appendChild(tagItem);
-				ingreValue.push(data);
+				// ingreValue.push(data);
+				// let list = [...showedItems];
 				// const value = ingreValue.flatMap((v) => v.split(" "));
 				// console.log(value);
 				// value.map((keyword) => {
@@ -34,14 +32,16 @@ function ingreItem(data, noresult) {
 				// displayRecipes(list);
 				// displayIngreItems(ingreResult);
 				// console.log(ingreValue);
-				ingredientSearch();
-				applianceSearch();
+
 				ustensileSearch();
+				applianceSearch();
+				ingredientSearch();
 			});
 		} else {
 			a.style.marginLeft = "20px";
 		}
+
 		return li;
 	}
-	return { getIngreItemDOM };
+	return { getUstensileItemDOM };
 }

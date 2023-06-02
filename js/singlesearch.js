@@ -5,6 +5,7 @@ const searchInput = document.querySelector(".basic-search-input");
 let singleValue = "";
 let filterArr;
 let fixRecipesArr;
+
 searchInput.addEventListener("keyup", async (event) => {
 	singleValue = searchInput.value;
 	if (searchInput.value.length > 2) {
@@ -104,6 +105,7 @@ async function displayRecipes(Recipes) {
 const init = async () => {
 	recipeListe = await fetchData();
 	showedItems = recipeListe;
+	fixRecipesArr = showedItems;
 	displayRecipes(showedItems);
 	const ingreResult = keywordIngredientArr(showedItems, "");
 	displayIngreItems(ingreResult);
