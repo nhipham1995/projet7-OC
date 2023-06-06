@@ -1,3 +1,4 @@
+/* croll for ingredient if the content is too long */
 body {
 	display: flex;
 	flex-direction: column;
@@ -155,6 +156,8 @@ ul#dropdown-menu-ingre {
 	grid-template-columns: repeat(1, 1fr);
 	padding-bottom: 15px;
 	flex-wrap: wrap;
+	max-height: 200px;
+	overflow-y: scroll;
 }
 .dropdown-col li {
 	max-width: 280px;
