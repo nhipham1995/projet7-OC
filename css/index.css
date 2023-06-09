@@ -221,6 +221,7 @@ main.container {
 	grid-template-rows: repeat(3, 1fr);
 	gap: 45px;
 	height: 100%;
+	width: auto;
 }
 .article-list article {
 	height: inherit;
@@ -231,7 +232,8 @@ main.container {
 	overflow: hidden;
 }
 .article-list article .card img.card-img-top {
-	height: 175px;
+	height: 185px;
+	object-fit: cover;
 }
 .card-title-wrapper {
 	display: flex;

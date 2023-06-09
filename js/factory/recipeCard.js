@@ -1,14 +1,13 @@
 function recipeCard(data) {
 	const { id, name, time, ingredients, description } = data;
-
-	//   const picture = `assets/photographers/${portrait}`;
+	const picture = `assets/illustration/Recette${id < 10 ? "0" + id : id}.jpg`;
 
 	function getRecipeCardDOM() {
 		const article = document.createElement("article");
 		const divWrapper = document.createElement("div");
 		divWrapper.classList.add("card");
 		const img = document.createElement("img");
-		img.setAttribute("src", "./assets/images/ingre-demo.jpg");
+		img.setAttribute("src", picture);
 		img.classList.add("card-img-top");
 		const cardBody = document.createElement("div");
 		cardBody.classList.add("card-body");

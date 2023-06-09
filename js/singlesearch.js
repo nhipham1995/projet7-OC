@@ -29,7 +29,7 @@ searchInput.addEventListener("keyup", async (event) => {
 });
 
 const fetchData = async () => {
-	const response = await fetch("../js/recipes.js").then((res) =>
+	const response = await fetch("../data/recipes.js").then((res) =>
 		res
 			.text()
 			.then((res) => res.split("=", 2))
@@ -37,6 +37,7 @@ const fetchData = async () => {
 	);
 	return response;
 };
+
 const resultData = async (keyword, recipes) => {
 	const resultArr = [];
 	for (let m = 0; m < recipes.length; m++) {
